@@ -14,11 +14,10 @@ export const authStore = createStore<AuthState & AuthActions>((set) => ({
             .execute({ email, password })
             .then((res) =>
                 set({
+                    ...res,
                     isPending: false,
                     isAuthenticated: true,
                     hasError: false,
-                    accessToken: res.accessToken,
-                    refreshToken: res.refreshToken,
                 }),
             )
             .catch((err: Error) =>

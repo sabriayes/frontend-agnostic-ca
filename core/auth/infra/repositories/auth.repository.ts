@@ -8,7 +8,7 @@ import { RequestFailedException } from '@common/exceptions';
 
 @injectable()
 export class AuthRepository implements IAuthRepository {
-    async authBasic(input: Auth) {
+    async auth(input: Auth) {
         return axios
             .post<SessionDTO>('api/auth', input)
             .then(mapToSession)
@@ -17,7 +17,7 @@ export class AuthRepository implements IAuthRepository {
             });
     }
 
-    async checkSession() {
+    async getSession() {
         return axios
             .get<UserDTO>('api/auth')
             .then(mapToUser)

@@ -10,6 +10,6 @@ export class LoginUseCase implements ILoginUseCase {
 
     async execute(input: PropsType<ILoginUseCase>) {
         const authEntity = Auth.create(input);
-        return this.authRepository.authBasic(authEntity);
+        return this.authRepository.auth(authEntity);
     }
 }
