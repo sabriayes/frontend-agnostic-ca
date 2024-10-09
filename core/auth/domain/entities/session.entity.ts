@@ -1,6 +1,7 @@
-import { SessionException } from '@auth/domain/exceptions/session.exception';
+import { IncorrectTokenFormat } from '@common/exceptions';
+import { isToken } from '@common/validators';
 
-type SessionProps = Record<'accessToken' | 'refreshToken', string>;
+type SessionConstructorArgs = Record<'accessToken' | 'refreshToken', string>;
 
 export class Session {
     get accessToken() {
@@ -14,19 +15,17 @@ export class Session {
     constructor(
         private _accessToken: string,
         private _refreshToken: string,
-    ) {}
+    ) {
+    }
 
-    static create(props: SessionProps): Session {
-        const regex = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/;
-
-        if (!regex.test(props.accessToken)) {
-            throw new SessionException.InvalidTokenFormat('accessToken');
+    static create(args: SessionConstructorArgs): Session {
+        if (!isToken(args.accessToken) || !isToken(args.refreshToken)) {
+            throw new IncorrectTokenFormat();
         }
 
-        if (!regex.test(props.refreshToken)) {
-            throw new SessionException.InvalidTokenFormat('refreshToken');
-        }
-
-        return new Session(props.accessToken, props.refreshToken);
+        return new Session(
+            args.accessToken,
+            args.refreshToken,
+        );
     }
 }

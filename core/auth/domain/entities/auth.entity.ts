@@ -1,6 +1,10 @@
-import { AuthException } from '@auth/domain/exceptions/auth.exception';
+import {
+    InvalidEmailException,
+    InvalidPasswordException,
+} from '@common/exceptions';
+import { isEmail, isStrongPassword } from '@common/validators';
 
-type AuthProps = Record<'email' | 'password', string>;
+type AuthConstructorArgs = Record<'email' | 'password', string>;
 
 export class Auth {
     get email() {
@@ -17,25 +21,19 @@ export class Auth {
     ) {
     }
 
-    static create(props: AuthProps): Auth {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    static create(args: AuthConstructorArgs): Auth {
 
-        if (!emailRegex.test(props.email)) {
-            throw new AuthException.InvalidEmail(props.email);
+        if (!isEmail(args.email)) {
+            throw new InvalidEmailException();
         }
 
-        const minLength = 8;
-        const hasNumber = /\d/;
-        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
-
-        const isStrongPass = props.password.length >= minLength
-            && hasNumber.test(props.password)
-            && hasSpecialChar.test(props.password);
-
-        if (!isStrongPass) {
-            throw new AuthException.InvalidPassword(props.password);
+        if (!isStrongPassword(args.password)) {
+            throw new InvalidPasswordException();
         }
 
-        return new Auth(props.email, props.password);
+        return new Auth(
+            args.email,
+            args.password,
+        );
     }
 }

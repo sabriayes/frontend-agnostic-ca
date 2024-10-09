@@ -1,10 +1,16 @@
+import {
+    InvalidEmailException,
+    InvalidRoleException,
+} from '@common/exceptions';
+import { isEmail, isRole } from '@common/validators';
+
 export enum UserRole {
-    ADMIN = 'admin',
-    EDITOR = 'editor',
-    USER = 'user',
+    ADMIN   = 'admin',
+    EDITOR  = 'editor',
+    MEMBER  = 'member',
 }
 
-type UserProps = {
+type UserConstructorArgs = {
     id: string;
     email: string;
     name: string;
@@ -16,28 +22,41 @@ type UserProps = {
 
 export class User {
     constructor(
-        public id: string,
-        public email: string,
-        public name: string,
-        public surname: string,
-        public isActive: boolean = true,
-        public birthDate: Date,
-        public role: UserRole,
-    ) {}
+        private _id: string,
+        private _email: string,
+        private _name: string,
+        private _surname: string,
+        private _isActive: boolean = true,
+        private _birthDate: Date,
+        private _role: UserRole,
+    ) {
+    }
 
-    static create(props: UserProps): User {
-        if (!Object.values(UserRole).includes(props.role)) {
-            throw new Error('Invalid role');
+    static create(args: UserConstructorArgs): User {
+        if (!isEmail(args.email)) {
+            throw new InvalidEmailException();
+        }
+
+        if (!isRole(args.role, UserRole)) {
+            throw new InvalidRoleException();
         }
 
         return new User(
-            props.id,
-            props.email,
-            props.name,
-            props.surname,
-            props.isActive,
-            props.birthDate,
-            props.role,
+            args.id,
+            args.email,
+            args.name,
+            args.surname,
+            args.isActive,
+            args.birthDate,
+            args.role,
         );
+    }
+
+    setActive() {
+        this._isActive = true;
+    }
+
+    setPassive() {
+        this._isActive = false;
     }
 }
