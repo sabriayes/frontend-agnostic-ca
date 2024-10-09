@@ -14,7 +14,8 @@ export class Auth {
     constructor(
         private _email: string,
         private _password: string,
-    ) {}
+    ) {
+    }
 
     static create(props: AuthProps): Auth {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,11 +28,11 @@ export class Auth {
         const hasNumber = /\d/;
         const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
 
-        if (
-            props.password.length < minLength ||
-            !hasNumber.test(props.password) ||
-            !hasSpecialChar.test(props.password)
-        ) {
+        const isStrongPass = props.password.length >= minLength
+            && hasNumber.test(props.password)
+            && hasSpecialChar.test(props.password);
+
+        if (!isStrongPass) {
             throw new AuthException.InvalidPassword(props.password);
         }
 
