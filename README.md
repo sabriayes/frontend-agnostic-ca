@@ -8,6 +8,8 @@ used with different frontend frameworks, including **Angular, Vue 3, and
 Next.js 14**. Each framework has its own folder at the root level, and they all 
 share the same core business logic.
 
+![High Level Diagram](docs/high-level-diagram.png)
+
 ## Key Features
 
 - **Framework-Independent Core**: The core business logic is abstracted away 
