@@ -1,0 +1,127 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+.angular
+
+# only exists if Bazel was run
+/bazel-out
+
+# dependencies
+node_modules
+/node_modules
+/jspm_packages
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/pids
+/lib-cov
+/typings
+/logs
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+sw.*
+*.swp
+
+# system files
+.DS_Store
+Thumbs.db
+.fleet
+.idea
+
+# package files
+.npm
+package-lock.json
+yarn.lock
+.yarn-integrity
+Homestead.json
+Homestead.yaml
+
+# php laravel
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.phpunit.result.cache
+
+# env files
+.env
+.env.*
+!.env.example
+
+# vue & nuxt & next
+.next
+.nuxt
+.vuepress/dist
+.serverless
+build/Release
+bower_components
+*.pid
+*.seed
+*.pid.lock
+.nyc_output
+.grunt
+.lock-wscript
+.eslintcache
+.node_repl_history
+*.tgz
+.output
+.data
+.nitro
+.cache
+
+# test
+junit.xml
+e2e-report.xml
+unit-report.xml
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Terraform
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+
