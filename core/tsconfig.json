@@ -26,12 +26,15 @@
             "node_modules/@types"
         ],
         "paths": {
-			"@common/*": [
-				"common/*"
-			],
-			"@auth/*": [
-				"auth/*"
-			]
+            "@common/*": [
+                "common/*"
+            ],
+            "@auth/*": [
+                "auth/*"
+            ]
         }
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
