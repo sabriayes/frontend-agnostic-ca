@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
 import { User, UserRole } from '@auth/domain/entities';
-import { UserDTO } from '@auth/infra/dto';
+import { UserResDTO } from '@auth/infra/dto';
 
-export function mapToUser(response: AxiosResponse<UserDTO>): User {
+export function mapToUser(response: AxiosResponse<UserResDTO>): User {
     const {
         id,
         email,

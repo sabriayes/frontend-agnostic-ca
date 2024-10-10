@@ -4,9 +4,9 @@ import {
 } from '@common/exceptions';
 import { isEmail, isStrongPassword } from '@common/validators';
 
-type AuthConstructorArgs = Record<'email' | 'password', string>;
+type CredentialConstructorArgs = Record<'email' | 'password', string>;
 
-export class Auth {
+export class Credential {
     get email() {
         return this._email;
     }
@@ -21,7 +21,7 @@ export class Auth {
     ) {
     }
 
-    static create(args: AuthConstructorArgs): Auth {
+    static create(args: CredentialConstructorArgs): Credential {
 
         if (!isEmail(args.email)) {
             throw new InvalidEmailException();
@@ -31,7 +31,7 @@ export class Auth {
             throw new InvalidPasswordException();
         }
 
-        return new Auth(
+        return new Credential(
             args.email,
             args.password,
         );

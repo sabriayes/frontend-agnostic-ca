@@ -1,7 +1,7 @@
-import { Auth, Session, User } from '@auth/domain/entities';
+import { Credential, Session, User } from '@auth/domain/entities';
 
 export interface IAuthRepository {
-    auth(input: Auth): Promise<Session>;
+    auth(input: Credential): Promise<Session>;
 
     getSession(): Promise<User>;
 }

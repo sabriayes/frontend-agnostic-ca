@@ -1,16 +1,21 @@
 import axios from 'axios';
 import { injectable } from 'inversify';
-import { Auth } from '@auth/domain/entities';
+import { Credential } from '@auth/domain/entities';
 import { IAuthRepository } from '@auth/application/ports';
-import { SessionDTO, UserDTO } from '@auth/infra/dto';
-import { mapToSession, mapToUser } from '@auth/infra/mappers';
+import { SessionResDTO, UserResDTO } from '@auth/infra/dto';
 import { RequestFailedException } from '@common/exceptions';
+import {
+    mapToSession,
+    mapToUser,
+    mapToCredentialReqDTO,
+} from '@auth/infra/mappers';
 
 @injectable()
 export class AuthRepository implements IAuthRepository {
-    async auth(input: Auth) {
+    async auth(input: Credential) {
+        const body = mapToCredentialReqDTO(input);
         return axios
-            .post<SessionDTO>('api/auth', input)
+            .post<SessionResDTO>('api/auth', body)
             .then(mapToSession)
             .catch((e) => {
                 throw new RequestFailedException(e.message);
@@ -19,7 +24,7 @@ export class AuthRepository implements IAuthRepository {
 
     async getSession() {
         return axios
-            .get<UserDTO>('api/auth')
+            .get<UserResDTO>('api/auth')
             .then(mapToUser)
             .catch((e) => {
                 throw new RequestFailedException(e.message);
