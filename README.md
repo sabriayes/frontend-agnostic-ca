@@ -28,8 +28,8 @@ root
 │   │   ├── application/        # Use cases and input/output ports
 │   │   ├── domain/             # Domain entities and business rules
 │   │   ├── infra/              # External dependencies
-│   │   └── presentation/store  # Zustand state management setup
-│   ├── common
+│   │   └── presentation/store/ # Zustand state management setup
+│   └── common/
 │
 ├── angular/
 ├── vue/
