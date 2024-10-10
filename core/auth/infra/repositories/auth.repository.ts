@@ -16,7 +16,7 @@ export class AuthRepository implements IAuthRepository {
         const body = mapToCredentialReqDTO(input);
         return axios
             .post<SessionResDTO>('api/auth', body)
-            .then(mapToSession)
+            .then((res) => mapToSession(res.data))
             .catch((e) => {
                 throw new RequestFailedException(e.message);
             });
@@ -25,7 +25,7 @@ export class AuthRepository implements IAuthRepository {
     async getSession() {
         return axios
             .get<UserResDTO>('api/auth')
-            .then(mapToUser)
+            .then((res) => mapToUser(res.data))
             .catch((e) => {
                 throw new RequestFailedException(e.message);
             });

@@ -1,8 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { User, UserRole } from '@auth/domain/entities';
 import { UserResDTO } from '@auth/infra/dto';
 
-export function mapToUser(response: AxiosResponse<UserResDTO>): User {
+export function mapToUser(response: UserResDTO): User {
     const {
         id,
         email,
@@ -11,7 +10,7 @@ export function mapToUser(response: AxiosResponse<UserResDTO>): User {
         is_active,
         birth_date,
         role,
-    } = response.data;
+    } = response;
 
     return User.create({
         id,
