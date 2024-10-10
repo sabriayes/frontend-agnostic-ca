@@ -23,13 +23,15 @@ frameworks like Angular, Vue 3, and Next.js 14.
 ```shell
 root
 │
-├── core/               # Core application logic (business rules, use cases, domain models)
-│   ├── application/    # Use cases and input/output ports
-│   ├── domain/         # Domain entities and business rules
-│   ├── infra/          # External dependencies (optional)
-│   └── presentation/   # Zustand state management setup
+├── core/
+│   ├── (module)
+│   │   ├── application/        # Use cases and input/output ports
+│   │   ├── domain/             # Domain entities and business rules
+│   │   ├── infra/              # External dependencies
+│   │   └── presentation/store  # Zustand state management setup
+│   ├── common
 │
-├── angular/            # Angular-specific folder
-├── vue/                # Vue 3-specific folder
-└── next/               # Next.js 14-specific folder
+├── angular/
+├── vue/
+└── next/
 ```
