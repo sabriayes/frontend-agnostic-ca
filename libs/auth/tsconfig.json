@@ -1,6 +1,6 @@
 {
     "extends": [
-        "./../../tsconfig.core.json"
+        "../../tsconfig.json"
     ],
     "compilerOptions": {
         "baseUrl": ".",
@@ -10,6 +10,9 @@
         "paths": {
             "@libs/auth/*": [
                 "src/*"
+            ],
+            "@libs/common/*": [
+                "../common/src/*"
             ]
         }
     },

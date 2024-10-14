@@ -6,8 +6,8 @@
     "private": true,
     "license": "UNLICENSED",
     "scripts": {
-        "build": "lerna run start --scope=@libs/auth",
-        "test": "lerna run test",
+        "build": "lerna run build",
+        "test": "jest",
         "build:vue": "lerna run build --scope=@apps/vue",
         "build:next": "lerna run build --scope=@apps/next",
         "build:angular": "lerna run build --scope=@apps/angular",
@@ -23,7 +23,9 @@
         "libs/*"
     ],
     "devDependencies": {
-        "lerna": "^8.1.8"
+        "lerna": "^8.1.8",
+        "ts-jest": "^29.2.5",
+        "@types/jest": "^29.5.13"
     },
     "_moduleAliases": {
         "@libs/common": "libs/common/dist",
