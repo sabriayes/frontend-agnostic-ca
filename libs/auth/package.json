@@ -6,14 +6,12 @@
     "private": true,
     "license": "UNLICENSED",
     "main": "dist/index.js",
-    "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "tsc",
-        "start": "npm run build && node dist/main.js",
-        "test": "jest"
+        "start": "npm run build && node dist/main.js"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.1.0",
