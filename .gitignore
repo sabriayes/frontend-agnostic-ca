@@ -93,3 +93,6 @@ bower_components
 junit.xml
 e2e-report.xml
 unit-report.xml
+
+# monorepo
+.nx

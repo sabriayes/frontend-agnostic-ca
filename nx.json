@@ -1,0 +1,20 @@
+{
+	"npmScope": "frontend-agnostic-ca",
+	"affected": {
+		"defaultBase": "main"
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "nx/tasks-runners/default",
+			"options": {
+				"cacheableOperations": [
+					"build"
+				]
+			}
+		}
+	},
+	"workspaceLayout": {
+		"appsDir": "apps",
+		"libsDir": "libs"
+	}
+}
