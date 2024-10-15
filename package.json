@@ -23,7 +23,11 @@
         "libs/*"
     ],
     "devDependencies": {
+        "nx": "19.8.4",
         "lerna": "^8.1.8",
+        "@nrwl/cli": "latest",
+        "@nrwl/workspace": "^19.8.4",
+        "prettier": "^2.6.2",
         "ts-jest": "^29.2.5",
         "@types/jest": "^29.5.13"
     },

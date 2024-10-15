@@ -96,3 +96,7 @@ unit-report.xml
 
 # monorepo
 .nx
+
+
+.nx/cache
+.nx/workspace-data

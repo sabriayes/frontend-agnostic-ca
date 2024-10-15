@@ -1,20 +1,22 @@
 {
-	"npmScope": "frontend-agnostic-ca",
-	"affected": {
-		"defaultBase": "main"
-	},
-	"tasksRunnerOptions": {
-		"default": {
-			"runner": "nx/tasks-runners/default",
-			"options": {
-				"cacheableOperations": [
-					"build"
-				]
-			}
-		}
-	},
-	"workspaceLayout": {
-		"appsDir": "apps",
-		"libsDir": "libs"
-	}
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "npmScope": "frontend-agnostic-ca",
+    "defaultBase": "main",
+    "affected": {
+        "defaultBase": "main"
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": [
+                    "build"
+                ]
+            }
+        }
+    },
+    "workspaceLayout": {
+        "appsDir": "apps",
+        "libsDir": "libs"
+    }
 }
