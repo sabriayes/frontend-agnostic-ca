@@ -1,8 +1,8 @@
-import { Credential } from '../entities';
+import { Credential } from '@core/common/domain/entities';
 import {
     InvalidEmailException,
     InvalidPasswordException,
-} from '../exceptions';
+} from '@core/common/domain/exceptions';
 
 describe('Credential Entity', () => {
 

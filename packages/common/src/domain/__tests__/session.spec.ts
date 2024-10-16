@@ -1,5 +1,5 @@
-import { Session } from '../entities';
-import { IncorrectTokenFormat } from '../exceptions';
+import { Session } from '@core/common/domain/entities';
+import { IncorrectTokenFormat } from '@core/common/domain/exceptions';
 
 describe('Session Entity', () => {
 

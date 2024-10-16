@@ -12,8 +12,7 @@
     ],
     "scripts": {
         "prepare": "ts-patch install --verbose",
-        "build": "npm run prepare && tsc",
-        "type-check": "npm run prepare && tsc --nrp"
+        "build": "npm run prepare && tsc"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.1.0",
