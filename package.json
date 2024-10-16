@@ -7,7 +7,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "build": "lerna run build",
-        "test": "jest",
+        "test": "lerna run test",
         "build:vue": "lerna run build --scope=@apps/vue",
         "build:next": "lerna run build --scope=@apps/next",
         "build:angular": "lerna run build --scope=@apps/angular",
