@@ -12,11 +12,8 @@ const config: Config = {
         {
             preset: 'ts-jest',
             displayName: 'common',
-            testMatch: ['<rootDir>/libs/common/**/__tests__/**/*.spec.ts'],
-            testPathIgnorePatterns: ['<rootDir>/node_modules/'],
-            moduleNameMapper: {
-                '^@libs/common/(.*)$': '<rootDir>/libs/common/src/$1',
-            },
+            testMatch: ['<rootDir>/packages/common/**/__tests__/**/*.spec.ts'],
+            testPathIgnorePatterns: ['<rootDir>/node_modules/']
         },
     ],
 };

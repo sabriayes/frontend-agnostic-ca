@@ -6,23 +6,25 @@
         "noPropertyAccessFromIndexSignature": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "sourceMap": true,
         "declaration": true,
         "downlevelIteration": true,
-        "experimentalDecorators": true,
         "moduleResolution": "node",
         "importHelpers": true,
-        "target": "es2020",
+        "esModuleInterop": true,
+        "target": "ESNext",
         "module": "commonjs",
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "incremental": true,
+        "skipLibCheck": true,
         "lib": [
             "es2020",
             "dom"
-        ],
-        "paths": {
-            "@libs/common/*": [
-                "libs/common/src/*"
-            ]
-        }
+        ]
     },
     "exclude": [
         "node_modules",
