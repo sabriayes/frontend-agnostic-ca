@@ -25,7 +25,7 @@ frameworks like Angular, Vue 3, and Next.js 14.
 ```shell
 root
 │
-├── libs                        # Shared apps/libs
+├── packages                        # Shared apps/libs
 │   └── (module)
 │       ├── application/        # Use cases and input/output ports
 │       ├── domain/             # Domain entities and business rules

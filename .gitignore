@@ -1,5 +1,6 @@
 # compiled output
 /dist
+**/dist
 /tmp
 /out-tsc
 /documentation
@@ -9,6 +10,7 @@
 
 # dependencies
 /node_modules
+**/node_modules
 /jspm_packages
 
 # profiling files
@@ -96,3 +98,7 @@ unit-report.xml
 
 # monorepo
 .nx
+
+
+.nx/cache
+.nx/workspace-data
