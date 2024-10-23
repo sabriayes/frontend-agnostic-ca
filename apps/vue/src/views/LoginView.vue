@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue';
+import { authStore } from '@packages/auth';
+
+const loading = ref(false);
 
 type LoginReqDto = {
     email: string
@@ -9,11 +12,13 @@ type LoginReqDto = {
 const form = reactive<LoginReqDto>({
     email: '',
     password: '',
-})
+});
+
+authStore.subscribe((s, p) => loading.value = s.hasError);
 
 const handleSubmit = () => {
-    console.log({ ...form })
-}
+    authStore.getState().Login(form.email, form.password);
+};
 </script>
 
 <template>
@@ -26,6 +31,7 @@ const handleSubmit = () => {
             >
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1
+                        v-if="loading"
                         class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
                     >
                         Login to your account
