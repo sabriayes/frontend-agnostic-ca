@@ -27,7 +27,7 @@ const _btnClass = computed(() => {
         :class="_btnClass"
         :disabled="props.isDisabled"
         aria-label="Login Button"
-        type="submit"
+        type="button"
         class=" w-full
                 text-white
                 font-medium
@@ -44,7 +44,8 @@ const _btnClass = computed(() => {
                 viewBox="0 0 100 100"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="inline-flex mr-1 w-4 h-4 animate-spin">
+                class="inline-flex mr-1 w-4 h-4 animate-spin"
+                data-testid="btn-icon">
                 <path
                     d="M100 50.5908C100 78.2051 77.6142 100.591 50
                     100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766

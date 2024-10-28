@@ -1,11 +1,22 @@
 <script setup lang="ts">
-type PropsType = {
-    nane: string,
-    chars: string,
-    joinDate: string,
+import { computed } from 'vue';
+import { getInitials, formatJoinDate } from '@/utils';
+
+export type PropsType = {
+    name: string,
+    joinDate: Date,
+    chars?: string,
 };
 
 const props = defineProps<PropsType>();
+
+const formattedDate = computed(() => formatJoinDate(props.joinDate));
+
+const formattedChars = computed(() => {
+    return !props.chars
+        ? getInitials(props.name)
+        : props.chars.toLocaleUpperCase();
+});
 </script>
 
 <template>
@@ -20,16 +31,21 @@ const props = defineProps<PropsType>();
                     bg-gray-100
                     rounded-full
                     dark:bg-gray-600">
-            <span class="font-medium text-gray-600 dark:text-gray-300">
-                {{ props.chars.toLocaleUpperCase() }}
+            <span aria-hidden="true"
+                  class="font-medium text-gray-600 dark:text-gray-300"
+                  data-testid="avatar-initials">
+                {{ formattedChars }}
             </span>
         </div>
         <div class="font-medium dark:text-white">
-            <div>{{ props.name }}</div>
-            <div class="text-sm
-                        text-gray-500
-                        dark:text-gray-400">
-                Joined in {{ props.joinDate }}
+            <div aria-label="Name"
+                 data-testid="avatar-name">
+                {{ props.name }}
+            </div>
+            <div aria-label="Join date"
+                 data-testid="avatar-join-date"
+                 class="text-sm text-gray-500 dark:text-gray-400">
+                Joined in {{ formattedDate }}
             </div>
         </div>
     </div>

@@ -14,14 +14,14 @@ describe('LoginFormButton.vue', () => {
         },
     });
 
-    it('should render correctly when init', () => {
+    it('should renders text correctly', () => {
         const wrapper = createComp();
 
         const button = wrapper.find('button');
         expect(button.text()).toBe(TEXT);
         expect(button.classes()).toContain('bg-blue-600');
 
-        const icon = button.find('svg');
+        const icon = button.find('[data-testid="btn-icon"]');
         expect(icon.exists()).toBe(false);
     });
 
@@ -33,7 +33,7 @@ describe('LoginFormButton.vue', () => {
         expect(button.classes()).toContain('cursor-not-allowed');
         expect(button.classes()).toContain('bg-gray-600');
 
-        const icon = button.find('svg');
+        const icon = button.find('[data-testid="btn-icon"]');
         expect(icon.exists()).toBe(false);
     });
 
@@ -46,11 +46,11 @@ describe('LoginFormButton.vue', () => {
         const button = wrapper.find('button');
         expect(button.text()).toBe(PENDING_TEXT);
 
-        const icon = button.find('svg');
+        const icon = button.find('[data-testid="btn-icon"]');
         expect(icon.exists()).toBe(true);
     });
 
-    it('should show default pending text without [pendingText]', () => {
+    it('should renders default pending text without [pendingText]', () => {
         const wrapper = createComp({
             isPending: true,
         });
