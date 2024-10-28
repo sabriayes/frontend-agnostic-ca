@@ -1,12 +1,29 @@
 <script setup lang="ts">
+import { computed, reactive } from 'vue';
+import { useAuthStore } from '@/store/auth.store';
 import LoginFormHeader from '@/components/LoginFormHeader.vue';
 import LoginFormButton from '@/components/LoginFormButton.vue';
+
+const { isPending, Login } = useAuthStore();
+const form = reactive({
+    email: null,
+    password: null,
+});
+
+const isDisabled = computed(() => !Object.values(form).every(Boolean));
+
+function submitForm() {
+    if (isPending.value || isDisabled.value) return;
+
+    Login(form.email, form.password);
+}
+
 </script>
 
 <template>
     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <LoginFormHeader />
-        <form class="space-y-4 md:space-y-6">
+        <div class="space-y-4 md:space-y-6">
             <div>
                 <label
                     for="email"
@@ -19,6 +36,7 @@ import LoginFormButton from '@/components/LoginFormButton.vue';
                     Email
                 </label>
                 <input
+                    v-model="form.email"
                     required
                     type="email"
                     name="email"
@@ -53,6 +71,7 @@ import LoginFormButton from '@/components/LoginFormButton.vue';
                     Password
                 </label>
                 <input
+                    v-model="form.password"
                     required
                     type="password"
                     name="password"
@@ -75,7 +94,12 @@ import LoginFormButton from '@/components/LoginFormButton.vue';
                             dark:focus:ring-blue-500
                             dark:focus:border-blue-500" />
             </div>
-            <LoginFormButton :disabled="true" :loading="false" />
-        </form>
+            <LoginFormButton
+                @fired="submitForm"
+                :is-pending="isPending"
+                :is-disabled="isDisabled"
+                text="Login"
+                pending-text="Please wait..." />
+        </div>
     </div>
 </template>

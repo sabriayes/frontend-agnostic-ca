@@ -12,7 +12,11 @@ export const authStore = createStore<AuthState & AuthActions>((set) => ({
     ...initState(),
 
     Login: async (email, password) => {
-        set({ isPending: true });
+        set({
+            isPending: true,
+            hasError: false,
+            error: ''
+        });
 
         container
             .get<ILoginUseCase>('ILoginUseCase')

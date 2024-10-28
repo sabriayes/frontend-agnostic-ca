@@ -21,6 +21,7 @@ export function useAuthStore() {
         isPending,
         isAuthenticated,
         hasError,
-        error
+        error,
+        Login: authStore.getState().Login,
     };
 }

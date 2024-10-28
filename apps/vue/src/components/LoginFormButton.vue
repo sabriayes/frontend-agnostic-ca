@@ -8,6 +8,8 @@ export type PropsType = {
     isPending?: boolean,
 };
 
+defineEmits(['fired']);
+
 const props = withDefaults(defineProps<PropsType>(), {
     pendingText: 'Waiting...',
     isDisabled: false,
@@ -20,10 +22,12 @@ const _btnClass = computed(() => {
         ? 'bg-gray-600 cursor-not-allowed'
         : 'bg-blue-600 hover:bg-blue-700';
 });
+
 </script>
 
 <template>
     <button
+        @click="$emit('fired')"
         :class="_btnClass"
         :disabled="props.isDisabled"
         aria-label="Login Button"
