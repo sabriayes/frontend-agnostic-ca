@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import LoginFormAvatar, { PropsType } from '@/components/LoginFormAvatar.vue';
 
-describe('AvatarComponent.vue', () => {
+describe('LoginFormAvatar.vue', () => {
 
     const NAME = 'JON DOE';
     const CHARS = 'jd';
