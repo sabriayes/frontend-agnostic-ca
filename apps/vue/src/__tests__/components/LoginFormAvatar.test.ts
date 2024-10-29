@@ -24,11 +24,22 @@ describe('LoginFormAvatar.vue', () => {
         expect(chars.text()).toBe(CHARS.toUpperCase());
     });
 
-    it('should renders the avatar initials in uppercase when pass empty [chars]', () => {
+    it('should renders the avatar initials when pass empty [chars]', () => {
         const wrapper = createComp({ chars: '' });
 
         const chars = wrapper.find('[data-testid="avatar-initials"]');
         expect(chars.text()).toBe(CHARS.toUpperCase());
+    });
+
+    it('should renders the single avatar initials when pass single [name]', () => {
+        const partOfName = NAME.split(' ')[0];
+        const wrapper = createComp({
+            name: partOfName,
+            chars: '',
+        });
+
+        const chars = wrapper.find('[data-testid="avatar-initials"]');
+        expect(chars.text()).toBe(partOfName[0]);
     });
 
     it('should renders the name correctly', () => {
