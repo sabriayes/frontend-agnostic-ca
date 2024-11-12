@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import LoginFormAvatar, { PropsType } from '@/components/LoginFormAvatar.vue';
+import LoginFormAvatar, { type PropsType } from '@/components/LoginFormAvatar.vue';
 
 describe('LoginFormAvatar.vue', () => {
 
@@ -8,11 +8,13 @@ describe('LoginFormAvatar.vue', () => {
     const CHARS = 'jd';
     const JOIN_DATE = new Date('2024-11-20');
 
-    const createComp = (props: PropsType) => mount(LoginFormAvatar, {
+    const createComp = (props?: Partial<PropsType>) => mount(LoginFormAvatar, {
         props: {
-            name: NAME,
-            chars: CHARS,
-            joinDate: JOIN_DATE,
+            ...{
+                name: NAME,
+                chars: CHARS,
+                joinDate: JOIN_DATE,
+            },
             ...props,
         },
     });

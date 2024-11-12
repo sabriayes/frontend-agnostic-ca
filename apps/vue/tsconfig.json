@@ -13,6 +13,6 @@
     ],
     "compilerOptions": {
         "module": "NodeNext",
-        "moduleResolution": "node"
+        "moduleResolution": "NodeNext"
     }
 }

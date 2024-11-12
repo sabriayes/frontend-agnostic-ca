@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import LoginFormButton, { PropsType } from '@/components/LoginFormButton.vue';
+import LoginFormButton, { type PropsType } from '@/components/LoginFormButton.vue';
 
 describe('LoginFormButton.vue', () => {
 
     const TEXT = 'LOGIN';
     const PENDING_TEXT = 'PLEASE WAIT...';
 
-    const createComp = (props: PropsType) => mount(LoginFormButton, {
+    const createComp = (props?: Partial<PropsType>) => mount(LoginFormButton, {
         props: {
             text: TEXT,
             ...props,
