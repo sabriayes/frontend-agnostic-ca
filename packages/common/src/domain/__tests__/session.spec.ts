@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { Session } from '@core/common/domain/entities';
 import { IncorrectTokenFormat } from '@core/common/domain/exceptions';
 

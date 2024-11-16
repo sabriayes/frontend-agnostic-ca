@@ -11,7 +11,7 @@
         "dist"
     ],
     "scripts": {
-        "test": "jest",
+        "test": "vitest run",
         "prepare": "ts-patch install --verbose",
         "build": "npm run prepare && tsc"
     },

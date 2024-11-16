@@ -1,29 +1,23 @@
 {
-	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"outDir": "./dist",
-		"rootDir": "./src",
-		"paths": {
-			"@core/auth/*": [
-				"src/*"
-			]
-		},
-		"plugins": [
-			{
-				"transform": "typescript-transform-paths"
-			},
-			{
-				"transform": "typescript-transform-paths",
-				"afterDeclarations": true
-			}
-		]
-	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"**/node_modules/*"
-	]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "types": ["vitest/globals"],
+        "paths": {
+            "@core/auth/*": ["src/*"]
+        },
+        "plugins": [
+            {
+                "transform": "typescript-transform-paths"
+            },
+            {
+                "transform": "typescript-transform-paths",
+                "afterDeclarations": true
+            }
+        ]
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/node_modules/*"]
 }
