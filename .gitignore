@@ -45,6 +45,7 @@ speed-measure-plugin*.json
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
+lerna-debug.log
 testem.log
 sw.*
 *.swp
