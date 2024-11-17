@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LoginFormAvatar from '@/components/LoginFormAvatar.vue';
+import DashboardAvatar from '@/components/DashboardAvatar.vue';
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import LoginFormAvatar from '@/components/LoginFormAvatar.vue';
             <div
                 class="w-full p-5 bg-white rounded-xl shadow-2xl dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700"
             >
-                <LoginFormAvatar
+                <DashboardAvatar
                     name="Mürsel"
                     chars="ME"
                     :join-date="new Date()"

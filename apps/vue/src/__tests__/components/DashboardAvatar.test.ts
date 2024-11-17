@@ -1,14 +1,14 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import LoginFormAvatar, { type PropsType } from '@/components/LoginFormAvatar.vue';
+import DashboardAvatar, { type PropsType } from '@/components/DashboardAvatar.vue';
 
-describe('LoginFormAvatar.vue', () => {
+describe('DashboardAvatar.vue', () => {
 
     const NAME = 'JON DOE';
     const CHARS = 'jd';
     const JOIN_DATE = new Date('2024-11-20');
 
-    const createComp = (props?: Partial<PropsType>) => mount(LoginFormAvatar, {
+    const createComp = (props?: Partial<PropsType>) => mount(DashboardAvatar, {
         props: {
             ...{
                 name: NAME,
