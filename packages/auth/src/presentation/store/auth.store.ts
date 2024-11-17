@@ -15,7 +15,7 @@ export const authStore = createStore<AuthState & AuthActions>((set) => ({
         set({
             isPending: true,
             hasError: false,
-            error: ''
+            error: '',
         });
 
         container
@@ -23,10 +23,11 @@ export const authStore = createStore<AuthState & AuthActions>((set) => ({
             .execute({ email, password })
             .then((res: Session) =>
                 set({
-                    ...res,
                     isPending: false,
                     isAuthenticated: true,
                     hasError: false,
+                    accessToken: res.accessToken,
+                    refreshToken: res.refreshToken,
                 }),
             )
             .catch((err: Error) =>

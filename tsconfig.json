@@ -22,6 +22,7 @@
         "incremental": false,
         "skipLibCheck": true,
         "lib": ["es2020", "dom"],
+        "types": ["vitest/globals"]
     },
     "exclude": [
         "node_modules",

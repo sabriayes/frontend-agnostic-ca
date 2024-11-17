@@ -28,7 +28,7 @@
         "typescript-eslint": "^8.8.1"
     },
     "dependencies": {
-        "@packages/common": "0.0.1",
+        "@packages/common": "*",
         "axios": "^1.7.7",
         "inversify": "^6.0.2",
         "reflect-metadata": "^0.2.2",

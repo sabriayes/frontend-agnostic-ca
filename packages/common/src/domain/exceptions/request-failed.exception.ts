@@ -4,4 +4,8 @@ export class RequestFailedException extends Error {
     constructor(cause: string) {
         super(`HTTP request failed ['${cause}']`);
     }
+
+    static throwWith(e: Error) {
+        throw new RequestFailedException(e.message);
+    }
 }

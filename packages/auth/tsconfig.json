@@ -4,7 +4,6 @@
         "baseUrl": ".",
         "outDir": "./dist",
         "rootDir": "./src",
-        "types": ["vitest/globals"],
         "paths": {
             "@core/auth/*": ["src/*"]
         },
