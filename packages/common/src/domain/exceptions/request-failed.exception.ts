@@ -1,7 +1,7 @@
 export class RequestFailedException extends Error {
     override name = 'RequestFailedException';
 
-    static throwWith(e: Error) {
-        throw new RequestFailedException(e.message);
+    static of(e: Error): RequestFailedException {
+        return new RequestFailedException(e.message);
     }
 }
