@@ -2,7 +2,10 @@ import axios from 'axios';
 import { injectable } from 'inversify';
 import { IAuthRepository } from '@core/auth/application/ports';
 import { SessionResDTO, UserResDTO } from '@core/auth/infra/dto';
-import { RequestFailedException, Credential } from '@packages/common';
+import {
+    RequestFailedException,
+    Credential
+} from '@packages/common';
 import {
     toCredentialReqDTO,
     fromSessionResDTO,
@@ -17,7 +20,9 @@ export class AuthRepository implements IAuthRepository {
             .post<SessionResDTO>('api/auth', body)
             .then(res => res.data)
             .then(fromSessionResDTO)
-            .catch(RequestFailedException.throwWith);
+            .catch(e => {
+                throw RequestFailedException.of(e);
+            });
     }
 
     async getSession() {
@@ -25,6 +30,8 @@ export class AuthRepository implements IAuthRepository {
             .get<UserResDTO>('api/auth')
             .then(res => res.data)
             .then(fromUserResDTO)
-            .catch(RequestFailedException.throwWith);
+            .catch(e => {
+                throw RequestFailedException.of(e);
+            });
     }
 }
