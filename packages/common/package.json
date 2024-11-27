@@ -13,7 +13,7 @@
     "scripts": {
         "test": "vitest run",
         "prepare": "ts-patch install --verbose",
-        "build": "npm run prepare && tsc"
+        "build": "npm run prepare && tsc --project tsconfig.build.json"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.1.0",
