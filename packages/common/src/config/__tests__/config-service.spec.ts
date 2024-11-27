@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '@core/common/config';
 
 describe('Config Service', () => {
 
@@ -23,7 +23,7 @@ describe('Config Service', () => {
             appVersion: '1.0',
             maxRetryCount: 2,
             apiURL: 'https://localhost:4000',
-        };
+        } as const;
 
         configService.setVariables(newConfig);
 

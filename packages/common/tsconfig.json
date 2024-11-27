@@ -1,5 +1,10 @@
 {
     "extends": "../../tsconfig.json",
+    "references": [
+        {
+            "path": "./tsconfig.vitest.json"
+        }
+    ],
     "compilerOptions": {
         "baseUrl": ".",
         "outDir": "./dist",
@@ -21,6 +26,11 @@
     },
     "include": [
         "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/node_modules",
+        "**/*.spec.ts"
     ]
 }
 

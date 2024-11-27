@@ -1,10 +1,12 @@
+import { injectable } from 'inversify';
+import { defaultConfig } from '@core/common/config/config.const';
 import {
     EnvironmentVars,
-    IConfigService,
+    ICommonConfigService,
 } from '@core/common/config/config-service.interface';
-import { defaultConfig } from '@core/common/config/config.const';
 
-export class ConfigService implements IConfigService<EnvironmentVars> {
+@injectable()
+export class ConfigService implements ICommonConfigService {
     private environments = defaultConfig();
 
     get<G extends keyof EnvironmentVars>(key: G): EnvironmentVars[G] {

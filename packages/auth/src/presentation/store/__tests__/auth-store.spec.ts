@@ -52,7 +52,7 @@ describe('AuthStore', () => {
     describe('when login successfully', async () => {
         beforeAll(async () => {
             states = [];
-            axios.post.mockResolvedValue({
+            vi.mocked(axios.post).mockResolvedValue({
                 data: {
                     access_token: VALID_TOKEN_PATTERN,
                     refresh_token: VALID_TOKEN_PATTERN,
@@ -106,7 +106,7 @@ describe('AuthStore', () => {
     describe('when login failed', async () => {
         beforeAll(async () => {
             states = [];
-            axios.post.mockRejectedValue(new Error('error message'));
+            vi.mocked(axios.post).mockRejectedValue(new Error('error message'));
             await authStore.getState().Login(
                 VALID_EMAIL,
                 STRONG_PASSWORD,
