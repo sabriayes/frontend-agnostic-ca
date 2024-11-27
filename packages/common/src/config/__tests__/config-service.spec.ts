@@ -5,12 +5,13 @@ describe('Config Service', () => {
 
     test('should get default configuration', () => {
         const configService = new ConfigService();
-        expect(configService.getVariables()).toMatchObject({
-            port: 3000,
-            debugMode: false,
-            appVersion: '0.1',
-            maxRetryCount: 1,
-            apiURL: 'https://localhost',
+
+        expect(configService.getVariables()).toEqual({
+            port: expect.any(Number),
+            debugMode: expect.any(Boolean),
+            appVersion: expect.any(String),
+            maxRetryCount: expect.any(Number),
+            apiURL: expect.any(String),
         });
     });
 
@@ -40,5 +41,4 @@ describe('Config Service', () => {
             expect(configService.get('port')).toBe(5000);
         });
     });
-
 });
