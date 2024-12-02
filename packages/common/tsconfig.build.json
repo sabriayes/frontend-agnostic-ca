@@ -4,6 +4,11 @@
         "baseUrl": ".",
         "outDir": "./dist",
         "rootDir": "./src",
+        "paths": {
+            "@core/common/*": [
+                "src/*"
+            ]
+        },
         "plugins": [
             {
                 "transform": "typescript-transform-paths"
