@@ -4,7 +4,7 @@ export interface ITokensService {
 
     readonly refreshToken: string;
 
-    setTokens(accessTokens: string[], refreshTokens: string[]): void;
+    setTokens(accessToken: string, refreshToken: string): void;
 
     clearTokens(): void;
 
