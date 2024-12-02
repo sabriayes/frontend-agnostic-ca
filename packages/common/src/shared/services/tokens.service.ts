@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { injectable, inject } from 'inversify';
 import { ITokensService } from '@core/common/shared/ports';
-import { ICommonStoreService } from '@core/common/base';
+import { ICommonStoreService } from '@core/common/shared/ports';
 import { STORE_SERVICE_TOKEN } from '@core/common/shared/const';
 
 @injectable()

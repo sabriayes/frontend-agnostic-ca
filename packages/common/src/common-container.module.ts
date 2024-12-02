@@ -9,8 +9,7 @@ import {
     TOKENS_SERVICE_TOKEN,
 } from '@core/common/shared/const';
 import { StoreService, TokensService } from '@core/common/shared/services';
-import { ICommonStoreService } from '@core/common/base';
-import { ITokensService } from '@core/common/shared/ports';
+import { ITokensService, ICommonStoreService } from '@core/common/shared/ports';
 
 export const commonContainerModule = new ContainerModule((bind: interfaces.Bind) => {
     bind<ICommonConfigService>(CONFIG_SERVICE_TOKEN)
