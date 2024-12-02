@@ -17,13 +17,8 @@ export class LoginUseCase implements ILoginUseCase {
 
     async execute(input: PropsType<ILoginUseCase>) {
         const credentials = Credential.create(input);
-        const response = await this.authRepository.auth(credentials);
-
-        const { accessToken, refreshToken } = response;
-        this.tokensService.setTokens(
-            accessToken,
-            refreshToken,
-        );
-        return response;
+        const session = await this.authRepository.auth(credentials);
+        this.tokensService.setTokens(session);
+        return session;
     }
 }

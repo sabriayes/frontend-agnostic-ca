@@ -1,10 +1,12 @@
+import { Session } from '@core/common/domain';
+
 export interface ITokensService {
 
     readonly accessToken: string;
 
     readonly refreshToken: string;
 
-    setTokens(accessToken: string, refreshToken: string): void;
+    setTokens(session: Session): void;
 
     clearTokens(): void;
 

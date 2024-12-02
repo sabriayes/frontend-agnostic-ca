@@ -3,6 +3,7 @@ import { injectable, inject } from 'inversify';
 import { ITokensService } from '@core/common/shared/ports';
 import { ICommonStoreService } from '@core/common/shared/ports';
 import { STORE_SERVICE_TOKEN } from '@core/common/shared/const';
+import { Session } from '@core/common/domain';
 
 @injectable()
 export class TokensService implements ITokensService {
@@ -18,9 +19,9 @@ export class TokensService implements ITokensService {
         return this.storeService.get('refreshToken');
     }
 
-    setTokens(accessToken: string, refreshToken: string) {
-        this.storeService.set('accessToken', accessToken);
-        this.storeService.set('refreshToken', refreshToken);
+    setTokens(session: Session) {
+        this.storeService.set('accessToken', session.accessToken);
+        this.storeService.set('refreshToken', session.refreshToken);
     }
 
     clearTokens() {
