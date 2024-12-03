@@ -1,4 +1,4 @@
-import { ICommonStoreService, StoreSchema } from '@core/common/shared/ports';
+import { ICommonStoreService, StoreSchema } from '@core/common/ports';
 
 export class StoreService implements ICommonStoreService {
 

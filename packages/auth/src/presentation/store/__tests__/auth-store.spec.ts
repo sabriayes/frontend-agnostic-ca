@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import {
     vi,
     test,
@@ -8,16 +7,22 @@ import {
     afterAll,
     beforeEach,
 } from 'vitest';
-import axios from 'axios';
 import { authStore, AuthState } from '@core/auth/presentation/store';
+import { container } from '@core/auth/inversify.config';
+import { IHttpService, Symbols } from '@packages/common';
 
-vi.mock('axios');
-
-const VALID_TOKEN_PATTERN = 'VALID.TOKEN.HERE';
 const VALID_EMAIL = 'mail@domain.com';
 const STRONG_PASSWORD = 'PassW0rd*!';
 const WEAK_PASSWORD = '123456';
 const INVALID_EMAIL = 'invalidEmail';
+
+const mockHTTPService = {
+    get: vi.fn(),
+    post: vi.fn(),
+};
+
+container.rebind(Symbols.HTTPService)
+    .toConstantValue(mockHTTPService as IHttpService);
 
 expect.extend({
     toBeEmptyStr: (received) => {
@@ -52,11 +57,9 @@ describe('AuthStore', () => {
     describe('when login successfully', async () => {
         beforeAll(async () => {
             states = [];
-            vi.mocked(axios.post).mockResolvedValue({
-                data: {
-                    access_token: VALID_TOKEN_PATTERN,
-                    refresh_token: VALID_TOKEN_PATTERN,
-                },
+            mockHTTPService.post.mockResolvedValue({
+                access_token: 'V.T.H',
+                refresh_token: 'V.T.H'
             });
 
             await authStore.getState().Login(
@@ -87,6 +90,8 @@ describe('AuthStore', () => {
         });
 
         test('and should set authenticated state with tokens', () => {
+            expect(states[1]).toBeDefined();
+
             const {
                 accessToken,
                 refreshToken,
@@ -106,7 +111,8 @@ describe('AuthStore', () => {
     describe('when login failed', async () => {
         beforeAll(async () => {
             states = [];
-            vi.mocked(axios.post).mockRejectedValue(new Error('error message'));
+            mockHTTPService.post.mockRejectedValue(new Error('error message'));
+
             await authStore.getState().Login(
                 VALID_EMAIL,
                 STRONG_PASSWORD,
@@ -119,6 +125,8 @@ describe('AuthStore', () => {
         });
 
         test('set error state with message', () => {
+            expect(states[1]).toBeDefined();
+
             const {
                 accessToken,
                 refreshToken,

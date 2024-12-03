@@ -4,7 +4,7 @@ import {
     Credential,
     PropsType,
     ITokensService,
-    TOKENS_SERVICE_TOKEN,
+    Symbols,
 } from '@packages/common';
 
 @injectable()
@@ -12,7 +12,7 @@ export class LoginUseCase implements ILoginUseCase {
     @inject('IAuthRepository')
     private readonly authRepository!: IAuthRepository;
 
-    @inject(TOKENS_SERVICE_TOKEN)
+    @inject(Symbols.TokensService)
     private readonly tokensService!: ITokensService;
 
     async execute(input: PropsType<ILoginUseCase>) {

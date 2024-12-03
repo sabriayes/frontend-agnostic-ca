@@ -1,11 +1,7 @@
-import axios from 'axios';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { IAuthRepository } from '@core/auth/application/ports';
 import { SessionResDTO, UserResDTO } from '@core/auth/infra/dto';
-import {
-    RequestFailedException,
-    Credential
-} from '@packages/common';
+import { Credential, IHttpService, Symbols } from '@packages/common';
 import {
     toCredentialReqDTO,
     fromSessionResDTO,
@@ -14,24 +10,20 @@ import {
 
 @injectable()
 export class AuthRepository implements IAuthRepository {
+
+    constructor(
+        @inject(Symbols.HTTPService) private readonly httpService: IHttpService,
+    ) {
+    }
+
     async auth(input: Credential) {
         const body = toCredentialReqDTO(input);
-        return axios
-            .post<SessionResDTO>('api/auth', body)
-            .then(res => res.data)
-            .then(fromSessionResDTO)
-            .catch(e => {
-                throw RequestFailedException.of(e);
-            });
+        return this.httpService.post<SessionResDTO>('api/auth', body)
+            .then(fromSessionResDTO);
     }
 
     async getSession() {
-        return axios
-            .get<UserResDTO>('api/auth')
-            .then(res => res.data)
-            .then(fromUserResDTO)
-            .catch(e => {
-                throw RequestFailedException.of(e);
-            });
+        return this.httpService.get<UserResDTO>('api/auth')
+            .then(fromUserResDTO);
     }
 }

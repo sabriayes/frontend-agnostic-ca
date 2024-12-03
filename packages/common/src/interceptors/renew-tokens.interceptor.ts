@@ -1,7 +1,5 @@
-import { Container } from 'inversify';
 import axios, { AxiosError } from 'axios';
-import { TOKENS_SERVICE_TOKEN } from '@core/common/shared/const';
-import { ITokensService } from '@core/common/shared/ports';
+import { ITokensService } from '@core/common/ports';
 
 const canRenew = (error: AxiosError): boolean =>
     error.response?.status === 401;
@@ -18,13 +16,12 @@ const createInstanceWithTokens = (error: AxiosError, token: string) => axios({
     },
 });
 
-export const useRenewTokensInterceptor = (container: Container) => {
+export const useRenewTokensInterceptor = (tokensService: ITokensService) => {
     return async (error: AxiosError) => {
         if (!canRenew(error)) {
             return Promise.reject(error);
         }
 
-        const tokensService = container.get<ITokensService>(TOKENS_SERVICE_TOKEN);
         return tokensService.renewTokens()
             .then(() => createInstanceWithTokens(error, tokensService.accessToken))
             .catch(e => {

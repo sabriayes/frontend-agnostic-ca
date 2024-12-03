@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { injectable, inject } from 'inversify';
-import { ITokensService } from '@core/common/shared/ports';
-import { ICommonStoreService } from '@core/common/shared/ports';
-import { STORE_SERVICE_TOKEN } from '@core/common/shared/const';
+import Symbols from '@core/common/ioc/symbols.const';
+import { ITokensService, ICommonStoreService } from '@core/common/ports';
 import { Session } from '@core/common/domain';
 
 @injectable()
 export class TokensService implements ITokensService {
 
-    @inject(STORE_SERVICE_TOKEN)
+    @inject(Symbols.StoreService)
     private readonly storeService!: ICommonStoreService;
 
     get accessToken(): string {
