@@ -111,7 +111,9 @@ describe('AuthStore', () => {
     describe('when login failed', async () => {
         beforeAll(async () => {
             states = [];
-            mockHTTPService.post.mockRejectedValue(new Error('error message'));
+            mockHTTPService.post.mockRejectedValue(
+                new Error('error message')
+            );
 
             await authStore.getState().Login(
                 VALID_EMAIL,

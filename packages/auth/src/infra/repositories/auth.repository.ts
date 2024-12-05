@@ -22,7 +22,7 @@ export class AuthRepository implements IAuthRepository {
             .then(fromSessionResDTO);
     }
 
-    async getSession() {
+    async getUser() {
         return this.httpService.get<UserResDTO>('api/auth')
             .then(fromUserResDTO);
     }

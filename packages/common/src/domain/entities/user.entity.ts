@@ -21,6 +21,22 @@ type UserConstructorArgs = {
 };
 
 export class User {
+    get name() {
+        return this._name;
+    }
+
+    get surname() {
+        return this._surname;
+    }
+
+    get email() {
+        return this._email;
+    }
+
+    get role() {
+        return this._role;
+    }
+
     constructor(
         private _id: string,
         private _email: string,

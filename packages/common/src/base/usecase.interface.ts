@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 export interface IUseCase<T = unknown, R = unknown> {
-    execute(input: T): R;
+    execute: [T] extends [never] ? () => R : (input: T) => R;
 }
 
 export type PropsType<T> = T extends IUseCase<infer T, infer R>

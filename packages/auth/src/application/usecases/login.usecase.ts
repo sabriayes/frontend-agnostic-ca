@@ -9,6 +9,7 @@ import {
 
 @injectable()
 export class LoginUseCase implements ILoginUseCase {
+
     @inject('IAuthRepository')
     private readonly authRepository!: IAuthRepository;
 
