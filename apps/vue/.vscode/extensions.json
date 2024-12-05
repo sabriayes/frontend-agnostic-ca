@@ -1,8 +1,8 @@
 {
-  "recommendations": [
-    "Vue.volar",
-    "vitest.explorer",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
-  ]
+    "recommendations": [
+        "Vue.volar",
+        "vitest.explorer",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ]
 }

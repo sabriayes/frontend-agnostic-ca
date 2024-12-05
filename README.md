@@ -25,7 +25,7 @@ frameworks like Angular, Vue 3, and Next.js 14.
 ```shell
 root
 │
-├── packages                        # Shared apps/libs
+├── packages                    # Shared apps/libs
 │   └── (module)
 │       ├── application/        # Use cases and input/output ports
 │       ├── domain/             # Domain entities and business rules
@@ -36,4 +36,16 @@ root
 │   ├── vue/
 │   ├── next/
 │   └── angular/
+```
+
+## Development
+```shell
+# build all packages and apps
+npx lerna run build
+# run all apps
+npx lerna run dev
+# or (specific app)
+npx lerna run dev --scope=@apps/vue
+npx lerna run dev --scope=@apps/next
+npx lerna run dev --scope=@apps/angular
 ```

@@ -1,6 +1,7 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import pluginVitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
@@ -9,6 +10,10 @@ export default [
     { languageOptions: { globals: globals.browser } },
     {
         ignores: ['node_modules', 'dist', 'public', '.nuxt', '.next', '.angular'],
+    },
+    {
+        ...pluginVitest.configs.recommended,
+        files: ['src/**/__tests__/*'],
     },
     pluginJs.configs.recommended,
     eslintConfigPrettier,
@@ -27,5 +32,9 @@ export default [
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/no-namespace': 'off'
         },
+    },
+    {
+        files: ['**/*.d.ts'],
+        excludedFiles: ['**/*.d.ts'],
     },
 ];

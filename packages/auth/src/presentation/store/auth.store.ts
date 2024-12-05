@@ -12,23 +12,25 @@ export const authStore = createStore<AuthState & AuthActions>((set) => ({
     ...initState(),
 
     Login: async (email, password) => {
-        set({ isPending: true });
+        set({
+            ...initState(),
+            isPending: true,
+        });
 
         container
             .get<ILoginUseCase>('ILoginUseCase')
             .execute({ email, password })
             .then((res: Session) =>
                 set({
-                    ...res,
-                    isPending: false,
+                    ...initState(),
                     isAuthenticated: true,
-                    hasError: false,
+                    accessToken: res.accessToken,
+                    refreshToken: res.refreshToken,
                 }),
             )
             .catch((err: Error) =>
                 set({
-                    isPending: false,
-                    isAuthenticated: false,
+                    ...initState(),
                     hasError: true,
                     error: err.message,
                 }),

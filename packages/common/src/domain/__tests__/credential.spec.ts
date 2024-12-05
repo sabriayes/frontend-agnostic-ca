@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { Credential } from '@core/common/domain/entities';
 import {
     InvalidEmailException,
@@ -5,14 +6,13 @@ import {
 } from '@core/common/domain/exceptions';
 
 describe('Credential Entity', () => {
-
     const EMAIL = 'email@domain.com';
     const PASSWORD = 'PassW0r!d*';
     const INVALID_EMAIL = 'invalidEmail';
     const WEAK_PASSWORD = '123456';
 
-    const create = (email: string, password: string) =>
-        () => Credential.create({ email, password });
+    const create = (email: string, password: string) => () =>
+        Credential.create({ email, password });
 
     it('should create a instance with valid email and password', () => {
         expect(create(EMAIL, PASSWORD)).not.toThrow();
@@ -23,12 +23,10 @@ describe('Credential Entity', () => {
     });
 
     it('should throw an error if email is invalid', () => {
-        expect(create(INVALID_EMAIL, PASSWORD))
-            .toThrow(InvalidEmailException);
+        expect(create(INVALID_EMAIL, PASSWORD)).toThrow(InvalidEmailException);
     });
 
     it('should throw an error if password is too weak', () => {
-        expect(create(EMAIL, WEAK_PASSWORD))
-            .toThrow(InvalidPasswordException);
+        expect(create(EMAIL, WEAK_PASSWORD)).toThrow(InvalidPasswordException);
     });
 });

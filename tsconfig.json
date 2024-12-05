@@ -19,16 +19,9 @@
         "removeComments": true,
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
-        "incremental": true,
+        "incremental": false,
         "skipLibCheck": true,
-        "lib": [
-            "es2020",
-            "dom"
-        ]
-    },
-    "exclude": [
-        "node_modules",
-        "**/node_modules",
-        "**/dist/**/*"
-    ]
+        "lib": ["es2020", "dom"],
+        "types": ["vitest/globals"]
+    }
 }

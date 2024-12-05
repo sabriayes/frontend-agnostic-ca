@@ -1,7 +1,7 @@
 import { User, UserRole } from '@packages/common';
 import { UserResDTO } from '@core/auth/infra/dto';
 
-export function mapToUser(response: UserResDTO): User {
+export function fromUserResDTO(response: UserResDTO): User {
     const {
         id,
         email,
